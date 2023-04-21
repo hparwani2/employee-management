@@ -29,7 +29,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<EmployeeDto>> getEmployees(@RequestParam(name = "size", required = false, defaultValue = "5") Integer size,
                                                           @RequestParam(name = "pageNo", required = false, defaultValue = "1") Integer pageNo,
                                                           @RequestParam(name = "sortDir", required = false, defaultValue = "ASC")Sort.Direction direction) {
@@ -37,7 +37,7 @@ public class EmployeeController {
         return ResponseEntity.ok().body(employeeService.getAllEmployees(PageRequest.of(pageNo, size, Sort.by(direction, "id"))));
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<String> createEmployee(@RequestBody EmployeeDto employeeDto) {
         if(employeeService.createEmployee(employeeDto)) {
             return ResponseEntity.status(HttpStatus.CREATED).body("Employee Created Successfully");
@@ -59,3 +59,19 @@ public class EmployeeController {
 
 
 }
+
+/*
+
+    client ( browser )     ---------->       PUT /employee
+
+
+    client ( browser )     -------------->   GET /login
+                            user and pass
+                           <--------------
+                        JWT (employeeId, roles)
+
+   client ( browser )   --------------------> PUT /employee
+                            JWT
+
+
+ */

@@ -15,3 +15,6 @@ spring:
     init:
       mode: always
       platform: h2
+
+jwt:
+  secret: "employee_management_system"
