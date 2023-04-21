@@ -1,7 +1,10 @@
 package com.employee.management.model;
 
 import com.employee.management.enums.EmployeeStatus;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -37,6 +40,8 @@ public class EmployeeEntity {
 
     private Float salary;
 
+    @Column(columnDefinition = "varchar(255) default 'ACTIVE'")
+    @Enumerated(EnumType.STRING)
     private EmployeeStatus status;
 
     @ManyToOne

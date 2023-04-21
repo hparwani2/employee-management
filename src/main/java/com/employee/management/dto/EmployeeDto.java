@@ -30,5 +30,5 @@ public class EmployeeDto {
 
     private DepartmentDto department;
 
-    private Set<RoleEntity> roles;
+    private Set<RoleDto> roles;
 }
